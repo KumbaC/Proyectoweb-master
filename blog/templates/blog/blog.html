@@ -1,0 +1,41 @@
+{% extends 'Appweb/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+    
+   <br> 
+<div class="row">
+{% for posts in post%}       
+ {% for categoria in posts.categorias.all%}
+
+  <div class="mx-auto col-lg-3 col-md-4 mb-4">
+    <div class="card">
+      <img src="{{posts.imagen.url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+       <a href="{% url 'categoria' categoria.id %}"><h4><span class="badge badge-danger col-xl-4">{{categoria.nombre}}</span></h4></a>
+       
+        <h4 class="card-title">{{posts.titulo}}</h4>
+        <p class="card-text">{{posts.contenido}}</p>
+          <small style="font-size:13px; color:#716F81" class="card-text">Autor:  {{posts.autor}}</small>
+          <small style="font-size:13px; color:#716F81" class="card-text ml-5">Publicado:  {{posts.created}}</small>
+      </div>
+    </div>
+  </div>
+
+ {% endfor %}
+
+{% endfor %}
+
+ </div>
+
+
+   
+
+
+   
+         
+         
+{% endblock %}

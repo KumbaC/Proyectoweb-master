@@ -1,0 +1,108 @@
+<html>
+
+<head>
+
+{% load static %}
+
+    <!-- Bootstrap -->
+    <link href="{% static '/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static '/vendor/font-awesome/css/font-awesome.css' %}" rel="stylesheet">
+     <!-- Fonts -->
+    
+     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"> 
+     
+    <link href="{% static '/css/gestion.css'%} "rel="stylesheet">
+</head>
+
+<body>
+
+    <h1 class="site-heading text-center text-white d-none d-lg-block">
+      
+        <span class="site-heading-lower">Gestión de Pedidos</span>
+      </h1>
+
+
+ <!-- Navbar -->
+ <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="home">Gestión de Pedidos</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar nav nav-pills mx-auto">
+        
+          <li class="nav-item px-lg-4">
+            <a class="h6 nav-link text-white   {% if request.path == '/' %} active bg-dark{% endif %} text-uppercase text-expanded" href="{% url 'Home' %}">Inicio</a>
+          </li>
+        
+          <li class="nav-item px-lg-4">
+            <a class="h6 nav-link text-white  {% if request.path == '/servicios/' %} active bg-dark {% endif %} text-uppercase text-expanded" href="{% url 'Servicios' %}">Servicios</a>
+          </li>
+          <li class="nav-item  px-lg-4">
+            <a class="h6 nav-link text-white {% if request.path == '/tienda/' %} active bg-dark {% endif %} text-uppercase text-expanded" href="{% url 'Tienda' %}">Tienda</a>
+          </li>
+          <li class="nav-item  px-lg-4">
+            <a class="h6 nav-link text-white  {% if request.path == '/contacto/' %} active bg-dark {% endif %} text-uppercase text-expanded" href="{% url 'Contacto' %}">Contacto</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="h6 nav-link text-white  {% if request.path|slice:':6' == '/blog/' %} active bg-dark {% endif %}  text-uppercase text-expanded" href="{% url 'Blog' %}">Blog</a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+{% block content %}
+    
+
+{% endblock %}
+
+
+    <!-- Footer -->
+    <footer class="footer text-faded text-center py-5">
+      <div class="container">
+        <p class="m-0">
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i style="background: #3DB2FF;" class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i  class="fa fa-circle fa-stack-2x"></i>
+	            <i style="background:blue;" class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i style="background: #ee0979;  /* fallback for old browsers */ background: -webkit-linear-gradient(to right, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
+                  background: linear-gradient(to right, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                  " class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	    </p>
+        <p class="m-0 mbt">
+        	<a href="sample.html" class="link">Política de privacidad</a> ·
+        	<a href="sample.html" class="link">Aviso legal</a> ·
+        	<a href="sample.html" class="link">Cookies</a>
+		</p>
+        <strong><p class="m-0 mbt1">&copy; Gestión de Pedidos 2021</p></strong>
+      </div>
+	</footer>
+
+    <!-- Bootstrap -->
+    <script src="{% static '/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,99 @@
+{% extends 'Appweb/base.html' %}
+{% load static %}
+
+{% block content %}
+ <main>
+   
+    <div class="container">
+
+      <!--Navbar-->
+      <nav class="rounded navbar navbar-dark bg-danger mt-3 mb-5">
+      
+      {% include "carro/widget.html" %}
+<h2 class="text-white"><i class="fa fa-shopping-cart" aria-hidden="true"></i></h2>
+
+        <!-- Navbar brand -->
+        <span class="navbar-brand">  CATEGORIAS</span>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+       
+        {% for categorias in categoria %}
+          <!-- Links -->
+           <ul class="nav nav-navbar nav-light">
+            <li class="list-group nav-item active">
+              <a class="nav-link text-white" href="#">{{categorias.nombre}}
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+          </ul>
+        {% endfor %}
+          <!-- Links -->
+
+          
+        </div>
+        <!-- Collapsible content -->
+
+      </nav>
+      <!--/.Navbar-->
+         <!--Section: Products v.3-->
+      <section class="text-center mb-4">
+
+        <!--Grid row-->
+        <div class="row">
+{% for producto in shop %}
+   
+        
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-4 mb-4">
+
+            <!--Card-->
+            <div class="card" >
+      
+              <!--Card image-->
+              <div class="view overlay">
+                <img src="{{producto.imagen.url}}" class="card-img-top" alt="">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                
+                  <h5 class="card-title">{{producto.nombre}}</h5>
+               
+                <h5>
+                  <strong>
+                  
+                    <a href="{% url 'carro:agregar' producto.id %}" class="dark-grey-text text-secondary">Añadir
+                      <i class="fa fa-plus-circle"></i>
+                    </a>
+                   {% if producto.disponibilidad == True %}  <span class="badge badge-success"> Disponible </span> {% else %}<span class="badge badge-danger"> No disponible </span>{% endif %}
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong>Precio: {{producto.precio}} Bs</strong>
+                </h4>
+
+              </div>
+              <!--Card content-->
+
+            </div>
+            <!--Card-->
+
+          </div>
+          <!--Grid column-->
+ 
+{% endfor %}
+</div></div>
+{% endblock %}
